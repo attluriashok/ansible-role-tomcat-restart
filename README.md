@@ -1,5 +1,7 @@
 # **Ansible Role: Tomcat Restart**
 
+[![Build Status](https://travis-ci.org/thiagomgo/ansible-role-tomcat-restart.svg?branch=master)](https://travis-ci.org/thiagomgo/ansible-role-tomcat-restart) [![Ansible Galaxy](https://img.shields.io/badge/ansible--galaxy-tomcat--restart-blue.svg)](https://galaxy.ansible.com/thiagomgo/tomcat-restart/)
+
 This role is used to restart a tomcat service.
 
 ## Requirements
@@ -46,5 +48,5 @@ MIT / BSD
 ## Author Information
 
 Thiago Gomes
-
+- thiago.mgomes [at] gmail.com
 

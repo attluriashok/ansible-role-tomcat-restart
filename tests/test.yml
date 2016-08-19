@@ -48,4 +48,4 @@
         recurse: yes
 
   roles:
-    - ansibe-role-tomcat-restart
+    - ansible-role-tomcat-restart

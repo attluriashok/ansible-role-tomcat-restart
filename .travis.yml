@@ -38,6 +38,9 @@ env:
   #- ANSIBLE_VERSION=1.8
 
 install:
+  # Check java version
+  - java -version
+
   # Install ansible
   - if [ "$ANSIBLE_VERSION" = "latest" ]; then pip install --no-binary ansible ansible; else pip install --no-binary ansible ansible==$ANSIBLE_VERSION; fi
   - pip install ansible
