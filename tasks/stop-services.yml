@@ -1,17 +1,17 @@
 ---
 
 - name: "Check tomcat is running on port {{ tomcat_port }}"
-  shell: "ss -tp state listening sport = :{{ tomcat_port }}"
+  shell: "ss -tp state listening sport = :{{ tomcat_port }} | java"
   args:
     executable: /bin/bash
   register: tomcat_srv
+  become: true
+  become_user: "{{ tomcat_user }}"
   ignore_errors: yes
-
-- debug: var=tomcat_srv
 
 - name: "Stop tomcat service"
   command: "{{ tomcat_path }}/bin/shutdown.sh"
-  when: "{{ tomcat_port }} in tomcat_srv.stdout"
+  when: "'java' in tomcat_srv.stdout"
 
 - name: "Wait for tomcat to stop"
   wait_for:
