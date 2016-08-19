@@ -6,12 +6,9 @@
     executable: /bin/bash
   register: tomcat_pid
 
-- debug: var=tomcat_pid
-
 - name: "Stop tomcat service"
   command: "{{ tomcat_path }}/bin/shutdown.sh"
   when: tomcat_pid is defined
-  #when: "'java' in tomcat_srv.stdout"
 
 - name: "Wait for tomcat to stop"
   wait_for:
