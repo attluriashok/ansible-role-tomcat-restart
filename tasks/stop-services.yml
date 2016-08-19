@@ -7,7 +7,7 @@
   register: tomcat_srv
   ignore_errors: yes
 
-  - debug: var=tomcat_srv
+- debug: var=tomcat_srv
 
 - name: "Stop tomcat service"
   command: "{{ tomcat_path }}/bin/shutdown.sh"
