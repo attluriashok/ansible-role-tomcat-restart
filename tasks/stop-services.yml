@@ -8,7 +8,7 @@
 
 - name: "Stop tomcat service"
   command: "{{ tomcat_path }}/bin/shutdown.sh"
-  when: tomcat_pid is defined
+  when: tomcat_pid.stdout is defined
 
 - name: "Wait for tomcat to stop"
   wait_for:
