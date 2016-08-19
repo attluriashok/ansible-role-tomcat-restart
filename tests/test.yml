@@ -47,5 +47,8 @@
         state: directory
         recurse: yes
 
+    - name: "Start tomcat service"
+      command: "{{ tomcat_path }}/bin/startup.sh"
+
   roles:
     - ansible-role-tomcat-restart
