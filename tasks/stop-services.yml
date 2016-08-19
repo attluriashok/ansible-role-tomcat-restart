@@ -1,0 +1,23 @@
+---
+
+- name: "Check tomcat is running on port {{ tomcat_port }}"
+  shell: "ss -tp state listening sport = :{{ tomcat_port }} | grep java"
+  args:
+    executable: /bin/bash
+  register: tomcat_srv
+  ignore_errors: yes
+
+- name: "Stop tomcat service"
+  command: "{{ tomcat_path }}/bin/shutdown.sh"
+  when: "'java' in tomcat_srv.stdout"
+
+- name: "Wait for tomcat to stop"
+  wait_for:
+    port: "{{ tomcat_port }}"
+    state: stopped
+    timeout: 120
+
+- name: "Force for tomcat to stop"
+  shell: "if [ $(pgrep java) ]; then pgrep java | xargs kill -9; fi"
+  args:
+    executable: /bin/bash
