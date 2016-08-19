@@ -11,7 +11,7 @@
 
 - name: "Stop tomcat service"
   command: "{{ tomcat_path }}/bin/shutdown.sh"
-  when: "'8080' in tomcat_srv.stdout"
+  when: "{{ tomcat_port }} in tomcat_srv.stdout"
 
 - name: "Wait for tomcat to stop"
   wait_for:
